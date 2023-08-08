@@ -1,0 +1,52 @@
+*,
+html {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: sans-serif;
+  box-sizing: none;
+  text-decoration: none;
+  overflow-x: hidden;
+  background-color: rgb(150, 95, 204);
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+h1 {
+  color: white;
+  position: absolute;
+  top: 0;
+  margin-top: 100px;
+}
+
+.preload {
+  position: absolute;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+}
+
+#click {
+  background-color: rebeccapurple;
+  color: white;
+  width: 200px;
+  height: 60px;
+  border-radius: 20px;
+  font-size: 1.7rem;
+  transition: 0.5s;
+  border-style: none;
+}
+
+#click:hover {
+  cursor: pointer;
+  background-color: rgb(134, 78, 190);
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>..</title>
+    <link rel="stylesheet" href="gaya.css" />
+  </head>
+  <body>
+    <img src="img/hertaa1.gif" alt="" class="preload" />
+    <img src="img/hertaa2.gif" alt="" class="preload" />
+    <div class="container">
+      <h1>HIT THE BUTTON!</h1>
+      <button id="click" onclick="clickMe()">Fun Button</button>
+    </div>
+    <script>
+      var audioList = [
+        new Audio("sound/kuruto.mp3"),
+        new Audio("sound/kuru1.mp3"),
+        new Audio("sound/kuru2.mp3"),
+      ];
+
+      for (const audio of audioList) {
+        audio.preload = "auto";
+      }
+
+      var firstSquist = true;
+
+      function clickMe() {
+        playKuru();
+        hertaSlide();
+      }
+
+      function playKuru() {
+        var audio;
+
+        if (firstSquist) {
+          firstSquist = false;
+          audio = audioList[0].cloneNode();
+        } else {
+          var random = Math.floor(Math.random() * 2) + 1;
+          audio = audioList[random].cloneNode();
+        }
+
+        audio.play();
+      }
+
+      function hertaSlide() {
+        var counter_button = document.getElementById("click");
+        var id = null;
+
+        var random = Math.floor(Math.random() * 2) + 1;
+        var elem = document.createElement("img");
+        elem.src = `img/hertaa${random}.gif`;
+        elem.style.position = "absolute";
+        elem.style.right = "-510px";
+        // elem.style.top = counter_button.getClientRects()[0].bottom + scrollY - 430 + "px";
+        elem.style.bottom = "0";
+        elem.style.zIndex = "-1";
+        document.body.appendChild(elem);
+
+        var pos = -510;
+        var limit = window.innerWidth + 510;
+        clearInterval(id);
+        id = setInterval(frame, 14);
+        function frame() {
+          if (pos >= limit) {
+            clearInterval(id);
+            elem.remove();
+          } else {
+            pos += 20;
+            elem.style.right = pos + "px";
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
